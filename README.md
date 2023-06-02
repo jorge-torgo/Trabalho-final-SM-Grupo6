@@ -1,2 +1,2 @@
-# RestApiDemo
-## This respository shows how to implement Rest Apis in Android using Retrofit 
+# Projeto SM grupo 6
+## Trabalho final SM 
