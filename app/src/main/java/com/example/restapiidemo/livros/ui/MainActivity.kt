@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +24,13 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val extras = intent.extras
+        if (extras != null) {
+            val value = extras.getString("Bookcase")
+            getSupportActionBar()?.title=value;
+        }
+        else
+            getSupportActionBar()?.title="Livros";
 
         vm = ViewModelProvider(this)[LivrosViewModel::class.java]
 
@@ -43,20 +51,20 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.home_menu, menu)
+        menuInflater.inflate(R.menu.livro_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_create_post -> showCreatePOstDialog()
+            R.id.menu_create_book -> showCreatePOstDialog()
         }
         return true
     }
 
     private fun showCreatePOstDialog() {
         val dialog = Dialog(this)
-        val view = LayoutInflater.from(this).inflate(R.layout.create_post_dialog, null)
+        val view = LayoutInflater.from(this).inflate(R.layout.create_livro_dialog, null)
         dialog.setContentView(view)
 
         var title = ""

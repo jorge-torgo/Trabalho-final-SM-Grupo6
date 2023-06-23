@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registo)
-
+        getSupportActionBar()?.hide()
         val textView3 = findViewById<TextView>(R.id.textView3)
         textView3.setOnClickListener {
             // intent to start activity
