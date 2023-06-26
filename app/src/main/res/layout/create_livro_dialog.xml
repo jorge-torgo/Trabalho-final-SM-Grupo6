@@ -16,67 +16,62 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_body"
+        android:id="@+id/et_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:hint="Enter Description"
-        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
     <EditText
-        android:id="@+id/et_body3"
+        android:id="@+id/et_gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:hint="Enter Gender"
-        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_body" />
+        app:layout_constraintTop_toBottomOf="@+id/et_description" />
 
     <EditText
-        android:id="@+id/et_body4"
+        android:id="@+id/et_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:hint="Reading Status"
-        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_body3" />
+        app:layout_constraintTop_toBottomOf="@+id/et_gender" />
 
     <EditText
-        android:id="@+id/et_body5"
+        android:id="@+id/et_start_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:hint="Start date"
-        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_body4" />
+        app:layout_constraintTop_toBottomOf="@+id/et_status" />
 
     <EditText
-        android:id="@+id/et_body6"
+        android:id="@+id/et_end_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:hint="End date"
-        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_body5" />
+        app:layout_constraintTop_toBottomOf="@+id/et_start_date" />
 
     <EditText
-        android:id="@+id/et_body7"
+        android:id="@+id/et_pages"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -85,55 +80,52 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_body6" />
+        app:layout_constraintTop_toBottomOf="@+id/et_end_date" />
 
     <EditText
-        android:id="@+id/et_body8"
+        android:id="@+id/et_edition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:hint="Enter Edition"
-        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_body7" />
+        app:layout_constraintTop_toBottomOf="@+id/et_pages" />
 
     <EditText
-        android:id="@+id/et_body9"
+        android:id="@+id/et_language"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:hint="Enter  Language"
-        android:inputType="number"
+        android:hint="Enter Language"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_body8" />
+        app:layout_constraintTop_toBottomOf="@+id/et_edition" />
 
     <EditText
-        android:id="@+id/et_body10"
+        android:id="@+id/et_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:hint="Enter  Note"
+        android:hint="Enter Note"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_body9" />
+        app:layout_constraintTop_toBottomOf="@+id/et_language" />
 
     <EditText
-        android:id="@+id/et_body11"
+        android:id="@+id/et_borrowed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:hint="What is borrowed"
-        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.842"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_body10" />
+        app:layout_constraintTop_toBottomOf="@+id/et_note" />
 
     <Button
         android:id="@+id/btn_submit"
@@ -143,6 +135,6 @@
         android:text="Create Book"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_body11" />
+        app:layout_constraintTop_toBottomOf="@+id/et_borrowed" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

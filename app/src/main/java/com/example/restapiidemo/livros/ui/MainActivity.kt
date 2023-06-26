@@ -14,7 +14,7 @@ import com.example.restapiidemo.R
 import com.example.restapiidemo.livros.data.LivrosModel
 import com.example.restapiidemo.livros.viewmodel.LivrosViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.create_post_dialog.view.*
+import kotlinx.android.synthetic.main.create_livro_dialog.view.*
 
 class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
 
@@ -68,17 +68,46 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
         dialog.setContentView(view)
 
         var title = ""
-        var count = ""
+        var description = ""
+        var gender = ""
+        var status = ""
+        var start_date = ""
+        var end_date = ""
+        var pages = ""
+        var edition = ""
+        var language = ""
+        var note = ""
+        var borrowed = ""
+
 
         view.btn_submit.setOnClickListener {
             title = view.et_title.text.toString().trim()
-            count = view.et_body.text.toString().trim()
+            description= view.et_description.text.toString().trim()
+            gender = view.et_gender.text.toString().trim()
+            status = view.et_status.text.toString().trim()
+            start_date = view.et_start_date.text.toString().trim()
+            end_date = view.et_end_date.text.toString().trim()
+            pages = view.et_pages.text.toString().trim()
+            edition = view.et_edition.text.toString().trim()
+            language = view.et_language.text.toString().trim()
+            note = view.et_note.text.toString().trim()
+            borrowed = view.et_borrowed.text.toString().trim()
 
-            Log.d("ola", count.toString());
-            if (title.isNotEmpty() && count.isNotEmpty()) {
+
+            if (title.isNotEmpty() && description.isNotEmpty()) {
                 val livrosModel = LivrosModel()
                 livrosModel.title = title
-                livrosModel.count = count.toInt()
+                livrosModel.description = description
+                livrosModel.gender = gender
+                livrosModel.status = status
+                livrosModel.start_date = start_date
+                livrosModel.end_date = end_date
+                livrosModel.pages = pages.toInt()
+                livrosModel.edition = edition
+                livrosModel.language = language
+                livrosModel.note = note.toInt()
+                livrosModel.borrowed = borrowed
+
 
                 vm.createPost(livrosModel)
                 Log.d("ola", vm.toString());
