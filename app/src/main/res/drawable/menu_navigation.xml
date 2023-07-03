@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/estantes"
+        android:title="Estantes"
+        />
+    <item
+        android:id="@+id/livros"
+        android:title="Livros"
+       />
+
+    <item
+        android:id="@+id/desejos"
+        android:title="Desejos"
+       />
+    <item
+        android:id="@+id/emprestados"
+        android:title="Emprestados"
+        />
+
+</menu>

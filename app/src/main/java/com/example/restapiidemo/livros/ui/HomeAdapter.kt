@@ -54,7 +54,7 @@ class LivrosAdapter(var listener:HomeListener) : RecyclerView.Adapter<LivrosAdap
     class HomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bindView(item: LivrosModel?) {
             itemView.tv_home_item_title.text = item?.title
-            itemView.tv_home_item_body.text = item?.count.toString()
+            itemView.tv_home_item_body.text = item?.description.toString()
         }
 
     }

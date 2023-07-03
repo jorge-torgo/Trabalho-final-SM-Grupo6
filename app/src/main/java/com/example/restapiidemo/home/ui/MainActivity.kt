@@ -1,19 +1,23 @@
 package com.example.restapiidemo.home.ui
 
 import android.app.Dialog
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.restapiidemo.R
 import com.example.restapiidemo.home.data.PostModel
 import com.example.restapiidemo.home.viewmodel.HomeViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.create_post_dialog.view.*
+
+
 
 class MainActivity : AppCompatActivity(), HomeAdapter.HomeListener {
 
@@ -22,7 +26,38 @@ class MainActivity : AppCompatActivity(), HomeAdapter.HomeListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_livros)
+        setContentView(R.layout.activity_main)
+
+
+        // Initialize and assign variable
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
+        // Set Home selected
+        bottomNavigationView.selectedItemId = R.id.estantes;
+
+        // Perform item selected listener
+        bottomNavigationView.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.estantes -> return@OnNavigationItemSelectedListener true
+                R.id.livros -> {
+                    startActivity(Intent(applicationContext, com.example.restapiidemo.livros.ui.MainActivity::class.java))
+                    overridePendingTransition(0, 0)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.desejos -> {
+                    startActivity(Intent(applicationContext, com.example.restapiidemo.livros.ui.MainActivity::class.java))
+                    overridePendingTransition(0, 0)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.emprestados -> {
+                    startActivity(Intent(applicationContext, com.example.restapiidemo.livros.ui.MainActivity::class.java))
+                    overridePendingTransition(0, 0)
+                    return@OnNavigationItemSelectedListener true
+                }
+            }
+            false
+        })
+
 
         vm = ViewModelProvider(this)[HomeViewModel::class.java]
 

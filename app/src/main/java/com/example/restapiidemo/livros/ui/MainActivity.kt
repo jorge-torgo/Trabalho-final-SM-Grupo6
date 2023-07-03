@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_livros)
         val extras = intent.extras
         if (extras != null) {
             val value = extras.getString("Bookcase")
