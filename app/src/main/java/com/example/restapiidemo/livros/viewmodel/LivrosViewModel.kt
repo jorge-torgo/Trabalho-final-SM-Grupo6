@@ -30,7 +30,7 @@ class LivrosViewModel(application: Application): AndroidViewModel(application){
     }
 
     fun deletePost(id:Int){
-        //deletePostLiveData = livrosRepository?.deleteBook(id)
+       // deletePostLiveData = livrosRepository?.deleteBook(id)
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.restapiidemo.livros.ui
 
 import android.app.Dialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.restapiidemo.R
 import com.example.restapiidemo.livros.data.LivrosModel
 import com.example.restapiidemo.livros.viewmodel.LivrosViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.create_livro_dialog.view.*
 
@@ -24,6 +26,46 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_livros)
+
+        // Initialize and assign variable
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
+        // Set Home selected
+        bottomNavigationView.selectedItemId = R.id.livros;
+
+        // Perform item selected listener
+        bottomNavigationView.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.livros -> return@OnNavigationItemSelectedListener true
+                R.id.estantes -> {
+                    startActivity(Intent(applicationContext, com.example.restapiidemo.home.ui.MainActivity::class.java))
+                    overridePendingTransition(0, 0)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.desejos -> {
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    overridePendingTransition(0, 0)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.emprestados -> {
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    overridePendingTransition(0, 0)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.logout -> {
+                    startActivity(Intent(applicationContext,
+                        com.example.restapiidemo.login.ui.MainActivity::class.java))
+                    overridePendingTransition(0, 0)
+                    return@OnNavigationItemSelectedListener true
+                }
+            }
+            false
+        })
+
+
+
+
+
         val extras = intent.extras
         if (extras != null) {
             val value = extras.getString("Bookcase")

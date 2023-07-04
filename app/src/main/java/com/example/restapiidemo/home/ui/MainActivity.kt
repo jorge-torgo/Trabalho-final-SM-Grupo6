@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.restapiidemo.R
 import com.example.restapiidemo.home.data.PostModel
 import com.example.restapiidemo.home.viewmodel.HomeViewModel
+import com.example.restapiidemo.login.ui.MainActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.create_post_dialog.view.*
@@ -51,6 +52,11 @@ class MainActivity : AppCompatActivity(), HomeAdapter.HomeListener {
                 }
                 R.id.emprestados -> {
                     startActivity(Intent(applicationContext, com.example.restapiidemo.livros.ui.MainActivity::class.java))
+                    overridePendingTransition(0, 0)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.logout -> {
+                    startActivity(Intent(applicationContext,MainActivity::class.java))
                     overridePendingTransition(0, 0)
                     return@OnNavigationItemSelectedListener true
                 }

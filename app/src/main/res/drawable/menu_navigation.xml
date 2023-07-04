@@ -4,19 +4,24 @@
     <item
         android:id="@+id/estantes"
         android:title="Estantes"
+        android:icon="@drawable/estantes"/>
         />
     <item
         android:id="@+id/livros"
         android:title="Livros"
-       />
+        android:icon="@drawable/livros"/>
 
     <item
         android:id="@+id/desejos"
         android:title="Desejos"
-       />
+        android:icon="@drawable/desejos"/>
     <item
         android:id="@+id/emprestados"
         android:title="Emprestados"
-        />
+        android:icon="@drawable/emprestados"/>
+    <item
+        android:id="@+id/logout"
+        android:title="sign-out"
+        android:icon="@drawable/signout"/>
 
 </menu>

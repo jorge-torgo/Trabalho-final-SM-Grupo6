@@ -13,5 +13,4 @@ data class LivrosModel(
     var language:String?="",
     var note:Int?=0,
     var borrowed:String?=""
-
     )
