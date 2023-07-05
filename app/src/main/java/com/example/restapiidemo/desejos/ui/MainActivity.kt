@@ -1,4 +1,4 @@
-package com.example.restapiidemo.livros.ui
+package com.example.restapiidemo.desejos.ui
 
 import android.app.Dialog
 import android.content.Intent
@@ -11,32 +11,32 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.restapiidemo.R
-import com.example.restapiidemo.desejos.ui.MainActivity
-import com.example.restapiidemo.livros.data.LivrosModel
-import com.example.restapiidemo.livros.viewmodel.LivrosViewModel
+import com.example.restapiidemo.desejos.data.DesejosModel
+import com.example.restapiidemo.desejos.viewmodel.DesejosViewModel
+import com.example.restapiidemo.livros.ui.MainActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.create_livro_dialog.view.*
+import kotlinx.android.synthetic.main.create_desejos_dialog.view.*
 
-class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
+class MainActivity : AppCompatActivity(), DesejosAdapter.HomeListener {
 
-    private lateinit var vm: LivrosViewModel
-    private lateinit var adapter: LivrosAdapter
+    private lateinit var vm: DesejosViewModel
+    private lateinit var adapter: DesejosAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_livros)
+        setContentView(R.layout.activity_desejos)
 
         // Initialize and assign variable
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
         // Set Home selected
-        bottomNavigationView.selectedItemId = R.id.livros;
+        bottomNavigationView.selectedItemId = R.id.desejos;
 
         // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.livros -> return@OnNavigationItemSelectedListener true
+                R.id.desejos -> return@OnNavigationItemSelectedListener true
                 R.id.estantes -> {
                     startActivity(
                         Intent(
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
                     return@OnNavigationItemSelectedListener true
                 }
 
-                R.id.desejos -> {
+                R.id.livros -> {
                     startActivity(Intent(applicationContext, MainActivity::class.java))
                     overridePendingTransition(0, 0)
                     return@OnNavigationItemSelectedListener true
@@ -79,30 +79,18 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
             false
         })
 
+            supportActionBar?.title = "Wanted Books";
 
-        val extras = intent.extras
-        if (extras != null) {
-            val value = extras.getString("Bookcase")
-            supportActionBar?.title = value;
-        } else
-            supportActionBar?.title = "Books";
-
-        vm = ViewModelProvider(this)[LivrosViewModel::class.java]
+        vm = ViewModelProvider(this)[DesejosViewModel::class.java]
 
         initAdapter()
 
-
-        if (extras != null) {
-            Log.d("ola", extras.getString("Bookcase").toString());
-            vm.fetchBooksFilter(extras.getString("Bookcase").toString())
-        }
-        else
             vm.fetchAllPosts()
 
         vm.postModelListLiveData?.observe(this, Observer {
             if (it != null) {
                 rv_home.visibility = View.VISIBLE
-                adapter.setData(it as ArrayList<LivrosModel>)
+                adapter.setData(it as ArrayList<DesejosModel>)
             } else {
                 showToast("Something went wrong")
             }
@@ -112,7 +100,7 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.livro_menu, menu)
+        menuInflater.inflate(R.menu.desejos_menu, menu)
         return true
     }
 
@@ -125,7 +113,7 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
 
     private fun showCreatePOstDialog() {
         val dialog = Dialog(this)
-        val view = LayoutInflater.from(this).inflate(R.layout.create_livro_dialog, null)
+        val view = LayoutInflater.from(this).inflate(R.layout.create_desejos_dialog, null)
         dialog.setContentView(view)
 
         var title = ""
@@ -156,25 +144,25 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
 
 
             if (title.isNotEmpty() && description.isNotEmpty()) {
-                val livrosModel = LivrosModel()
-                livrosModel.title = title
-                livrosModel.description = description
-                livrosModel.gender = gender
-                livrosModel.status = status
-                livrosModel.start_date = start_date
-                livrosModel.end_date = end_date
-                livrosModel.pages = pages.toInt()
-                livrosModel.edition = edition
-                livrosModel.language = language
-                livrosModel.note = note.toInt()
-                livrosModel.borrowed = borrowed
+                val desejosModel = DesejosModel()
+                desejosModel.title = title
+                desejosModel.description = description
+                desejosModel.gender = gender
+                desejosModel.status = status
+                desejosModel.start_date = start_date
+                desejosModel.end_date = end_date
+                desejosModel.pages = pages.toInt()
+                desejosModel.edition = edition
+                desejosModel.language = language
+                desejosModel.note = note.toInt()
+                desejosModel.borrowed = borrowed
 
 
-                vm.createPost(livrosModel)
+                vm.createPost(desejosModel)
                 Log.d("ola", vm.toString());
                 vm.createPostLiveData?.observe(this, Observer {
                     if (it != null) {
-                        adapter.addData(livrosModel)
+                        adapter.addData(desejosModel)
                         rv_home.smoothScrollToPosition(0)
                     } else {
                         showToast("Cannot create post at the moment")
@@ -199,13 +187,13 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
     }
 
     private fun initAdapter() {
-        adapter = LivrosAdapter(this)
+        adapter = DesejosAdapter(this)
         rv_home.layoutManager = LinearLayoutManager(this)
         rv_home.adapter = adapter
     }
 
-    override fun onItemDeleted(livrosModel: LivrosModel, position: Int) {
-        livrosModel.id?.let { vm.deletePost(it) }
+    override fun onItemDeleted(desejosModel:DesejosModel, position: Int) {
+        desejosModel.id?.let { vm.deletePost(it) }
         vm.deletePostLiveData?.observe(this, Observer {
             if (it != null) {
                 adapter.removeData(position)
@@ -213,7 +201,6 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
                 showToast("Cannot delete post at the moment!")
             }
         })
-
     }
 
     private fun showToast(msg: String) {
