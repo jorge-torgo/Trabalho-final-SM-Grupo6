@@ -93,7 +93,6 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
 
 
         if (extras != null) {
-            Log.d("ola", extras.getString("Bookcase").toString());
             vm.fetchBooksFilter(extras.getString("Bookcase").toString())
         }
         else
