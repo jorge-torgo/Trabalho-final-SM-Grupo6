@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".emprestados.ui.MainActivity">
         </activity>
+        <activity android:name=".visualizarlivros.ui.MainActivity">
+        </activity>
 
         <activity
             android:name=".login.ui.MainActivity" >

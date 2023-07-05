@@ -10,11 +10,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.visualizar_livro)
-        getSupportActionBar()?.hide()
+
 
         val extras = intent.extras
         if (extras != null) {
-            val value = extras.getString("Book")
             var titulo = findViewById<TextView>(R.id.textView13)
             var descricao = findViewById<TextView>(R.id.textView24)
             var genero = findViewById<TextView>(R.id.textView25)
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             nota.text=extras.getString("nota");
             emprestar.text=extras.getString("emprestar");
 
-
+            supportActionBar?.title =extras.getString("Titulo");
         }
 
 
