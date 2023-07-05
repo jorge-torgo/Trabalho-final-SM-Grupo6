@@ -20,6 +20,9 @@ interface ApiInterface {
     @GET("livros")
     fun fetchAllBooks(): Call<List<LivrosModel>>
 
+    @GET("livrosFiltro/{bookcase}")
+    fun fetchAllBooksFiltered(@Path("bookcase") bookcase:String): Call<List<LivrosModel>>
+
     @POST("livros")
     fun createBook(@Body postModel: LivrosModel):Call<LivrosModel>
 

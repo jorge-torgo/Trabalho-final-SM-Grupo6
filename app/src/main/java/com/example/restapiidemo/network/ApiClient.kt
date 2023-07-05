@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-const val BASEURL = "https://s3fud3u.free.beeceptor.com"
+const val BASEURL = "https://trabsm.free.beeceptor.com"
 class ApiClient {
 
 

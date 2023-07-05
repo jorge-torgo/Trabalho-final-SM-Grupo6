@@ -3,21 +3,21 @@
 
     <item
         android:id="@+id/estantes"
-        android:title="Estantes"
+        android:title="Bookcases"
         android:icon="@drawable/estantes"/>
         />
     <item
         android:id="@+id/livros"
-        android:title="Livros"
+        android:title="Books"
         android:icon="@drawable/livros"/>
 
     <item
         android:id="@+id/desejos"
-        android:title="Desejos"
+        android:title="Wanted"
         android:icon="@drawable/desejos"/>
     <item
         android:id="@+id/emprestados"
-        android:title="Emprestados"
+        android:title="Borrowed"
         android:icon="@drawable/emprestados"/>
     <item
         android:id="@+id/logout"

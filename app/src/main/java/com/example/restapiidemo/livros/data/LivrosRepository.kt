@@ -44,6 +44,34 @@ class LivrosRepository {
 
     }
 
+    fun fetchAllBooksFiltered(bookcase:String):LiveData<List<LivrosModel>>{
+        val data = MutableLiveData<List<LivrosModel>>()
+
+        apiInterface?.fetchAllBooksFiltered(bookcase)?.enqueue(object : Callback<List<LivrosModel>>{
+
+            override fun onFailure(call: Call<List<LivrosModel>>, t: Throwable) {
+                data.value = null
+            }
+
+            override fun onResponse(
+                call: Call<List<LivrosModel>>,
+                response: Response<List<LivrosModel>>
+            ) {
+
+                val res = response.body()
+                if (response.code() == 200 &&  res!=null){
+                    data.value = res
+                }else{
+                    data.value = null
+                }
+
+            }
+        })
+
+        return data
+
+    }
+
     fun createBook(livrosModel: LivrosModel):LiveData<LivrosModel>{
         val data = MutableLiveData<LivrosModel>()
 

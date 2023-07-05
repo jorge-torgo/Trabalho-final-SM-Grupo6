@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity(), EmprestadosAdapter.HomeListener {
             false
         })
 
-            supportActionBar?.title="Emprestados";
+            supportActionBar?.title="Borrowed Books";
 
         vm = ViewModelProvider(this)[EmprestadosViewModel::class.java]
 

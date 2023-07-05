@@ -38,23 +38,40 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
             when (item.itemId) {
                 R.id.livros -> return@OnNavigationItemSelectedListener true
                 R.id.estantes -> {
-                    startActivity(Intent(applicationContext, com.example.restapiidemo.home.ui.MainActivity::class.java))
+                    startActivity(
+                        Intent(
+                            applicationContext,
+                            com.example.restapiidemo.home.ui.MainActivity::class.java
+                        )
+                    )
                     overridePendingTransition(0, 0)
                     return@OnNavigationItemSelectedListener true
                 }
+
                 R.id.desejos -> {
                     startActivity(Intent(applicationContext, MainActivity::class.java))
                     overridePendingTransition(0, 0)
                     return@OnNavigationItemSelectedListener true
                 }
+
                 R.id.emprestados -> {
-                    startActivity(Intent(applicationContext, com.example.restapiidemo.emprestados.ui.MainActivity::class.java))
+                    startActivity(
+                        Intent(
+                            applicationContext,
+                            com.example.restapiidemo.emprestados.ui.MainActivity::class.java
+                        )
+                    )
                     overridePendingTransition(0, 0)
                     return@OnNavigationItemSelectedListener true
                 }
+
                 R.id.logout -> {
-                    startActivity(Intent(applicationContext,
-                        com.example.restapiidemo.login.ui.MainActivity::class.java))
+                    startActivity(
+                        Intent(
+                            applicationContext,
+                            com.example.restapiidemo.login.ui.MainActivity::class.java
+                        )
+                    )
                     overridePendingTransition(0, 0)
                     return@OnNavigationItemSelectedListener true
                 }
@@ -63,22 +80,24 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
         })
 
 
-
-
-
         val extras = intent.extras
         if (extras != null) {
             val value = extras.getString("Bookcase")
-            getSupportActionBar()?.title=value;
-        }
-        else
-            getSupportActionBar()?.title="Livros";
+            supportActionBar?.title = value;
+        } else
+            supportActionBar?.title = "Books";
 
         vm = ViewModelProvider(this)[LivrosViewModel::class.java]
 
         initAdapter()
 
-        vm.fetchAllPosts()
+
+        if (extras != null) {
+            Log.d("ola", extras.getString("Bookcase").toString());
+            vm.fetchBooksFilter(extras.getString("Bookcase").toString())
+        }
+        else
+            vm.fetchAllPosts()
 
         vm.postModelListLiveData?.observe(this, Observer {
             if (it != null) {
@@ -124,7 +143,7 @@ class MainActivity : AppCompatActivity(), LivrosAdapter.HomeListener {
 
         view.btn_submit.setOnClickListener {
             title = view.et_title.text.toString().trim()
-            description= view.et_description.text.toString().trim()
+            description = view.et_description.text.toString().trim()
             gender = view.et_gender.text.toString().trim()
             status = view.et_status.text.toString().trim()
             start_date = view.et_start_date.text.toString().trim()

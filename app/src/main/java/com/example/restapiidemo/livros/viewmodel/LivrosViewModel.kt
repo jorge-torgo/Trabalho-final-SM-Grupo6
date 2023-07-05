@@ -24,6 +24,9 @@ class LivrosViewModel(application: Application): AndroidViewModel(application){
     fun fetchAllPosts(){
         postModelListLiveData = livrosRepository?.fetchAllBooks()
     }
+    fun fetchBooksFilter(bookcase:String){
+        postModelListLiveData = livrosRepository?.fetchAllBooksFiltered(bookcase)
+    }
 
     fun createPost(postModel: LivrosModel){
         createPostLiveData = livrosRepository?.createBook(postModel)
