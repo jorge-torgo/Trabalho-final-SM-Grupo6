@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), HomeAdapter.HomeListener {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.emprestados -> {
-                    startActivity(Intent(applicationContext, com.example.restapiidemo.livros.ui.MainActivity::class.java))
+                    startActivity(Intent(applicationContext, com.example.restapiidemo.emprestados.ui.MainActivity::class.java))
                     overridePendingTransition(0, 0)
                     return@OnNavigationItemSelectedListener true
                 }

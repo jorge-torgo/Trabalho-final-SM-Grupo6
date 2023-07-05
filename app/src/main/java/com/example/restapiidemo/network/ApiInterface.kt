@@ -2,6 +2,7 @@ package com.example.restapiidemo.network
 
 import com.example.restapiidemo.home.data.PostModel
 import com.example.restapiidemo.livros.data.LivrosModel
+import com.example.restapiidemo.emprestados.data.EmprestadosModel
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -25,4 +26,9 @@ interface ApiInterface {
     @DELETE("livros/{id}")
     fun deleteBook(@Path("id") id:Int):Call<String>
 
+    @GET("emprestados")
+    fun fetchAllBorrowed(): Call<List<EmprestadosModel>>
+
+    @DELETE("emprestados/{id}")
+    fun deleteBorrowed(@Path("id") id:Int):Call<String>
 }
