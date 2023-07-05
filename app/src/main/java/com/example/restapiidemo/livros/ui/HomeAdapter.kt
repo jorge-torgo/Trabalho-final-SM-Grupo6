@@ -1,5 +1,6 @@
 package com.example.restapiidemo.livros.ui
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.restapiidemo.R
 import com.example.restapiidemo.home.data.PostModel
 import com.example.restapiidemo.livros.data.LivrosModel
+import com.example.restapiidemo.visualizarlivros.ui.MainActivity
 import kotlinx.android.synthetic.main.home_rv_item_view.view.*
 
 class LivrosAdapter(var listener:HomeListener) : RecyclerView.Adapter<LivrosAdapter.HomeViewHolder>(){
@@ -37,6 +39,26 @@ class LivrosAdapter(var listener:HomeListener) : RecyclerView.Adapter<LivrosAdap
         holder.itemView.img_delete.setOnClickListener {
             item?.let { it1 ->
                 listener.onItemDeleted(it1, position)
+            }
+        }
+        holder.bindView(item)
+        holder.itemView.tv_home_item_title .setOnClickListener {
+            item?.let { it1 ->
+                Log.d("ola", it1.title.toString());
+                val intent = Intent(holder.itemView.context, MainActivity::class.java)
+                intent.putExtra("Titulo",it1.title.toString());
+                intent.putExtra("descricao",it1.description.toString());
+                intent.putExtra("genero",it1.gender.toString());
+                intent.putExtra("estado",it1.status.toString());
+                intent.putExtra("data_inicio",it1.start_date.toString());
+                intent.putExtra("data_fim",it1.end_date.toString());
+                intent.putExtra("paginas",it1.pages.toString());
+                intent.putExtra("edicao",it1.edition.toString());
+                intent.putExtra("lingua",it1.language.toString());
+                intent.putExtra("nota",it1.note.toString());
+                intent.putExtra("emprestar",it1.borrowed.toString());
+
+                holder.itemView.context.startActivity(intent)
             }
         }
     }
